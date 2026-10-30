@@ -1,0 +1,10 @@
+mercado,edge_minimo,apostas_modelo,roi_modelo,odd_media_modelo,apostas_placebo,roi_placebo
+Média do mercado,0.00000,3772,-0.09736,3.76519,0,
+Média do mercado,0.05000,3128,-0.10018,3.92002,0,
+Média do mercado,0.10000,2565,-0.10733,4.10195,0,
+Pinnacle (fechamento),0.00000,3667,-0.06216,4.06509,0,
+Pinnacle (fechamento),0.05000,3265,-0.04945,4.18734,0,
+Pinnacle (fechamento),0.10000,2763,-0.05270,4.37861,0,
+Melhor preço,0.00000,4104,-0.02135,4.24492,1372,0.01488
+Melhor preço,0.05000,3823,-0.02431,4.32705,35,0.01000
+Melhor preço,0.10000,3309,-0.03044,4.50523,7,0.11429

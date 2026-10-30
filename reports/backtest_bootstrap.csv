@@ -1,0 +1,4 @@
+mercado,n,delta_log_loss,ic95_lo,ic95_hi,significativo
+Média do mercado,4126,0.03058,0.02310,0.03806,True
+Pinnacle (fechamento),3755,0.03182,0.02371,0.03978,True
+Melhor preço,4125,0.03069,0.02307,0.03810,True

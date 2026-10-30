@@ -1,0 +1,4 @@
+mercado,n,modelo_log_loss,mercado_log_loss,modelo_brier,mercado_brier,modelo_rps,mercado_rps,modelo_acc,mercado_acc
+Média do mercado,4126,1.02762,0.99704,0.61685,0.59634,0.20914,0.20011,0.48958,0.51430
+Pinnacle (fechamento),3755,1.02886,0.99704,0.61752,0.59626,0.20960,0.20024,0.48895,0.51558
+Melhor preço,4125,1.02762,0.99693,0.61684,0.59624,0.20917,0.20011,0.48970,0.51273

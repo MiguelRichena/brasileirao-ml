@@ -1,0 +1,11 @@
+{
+  "partidas": 5646,
+  "temporadas": [
+    2012,
+    2026
+  ],
+  "ultima_partida": "2026-10-30",
+  "features": 32,
+  "jogos_restantes": 53,
+  "simulacoes": 10000
+}
