@@ -25,7 +25,7 @@ import pandas as pd
 
 from brasileirao_ml.config import CLASSES, FEATURES_FILE, REPORTS
 from brasileirao_ml.data import load_matches
-from brasileirao_ml.evaluate import log_loss, score
+from brasileirao_ml.evaluate import score
 from brasileirao_ml.features import FEATURES
 from brasileirao_ml.models import MODEL_SPECS, fit_predict
 

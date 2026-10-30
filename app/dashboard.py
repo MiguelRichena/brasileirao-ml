@@ -29,7 +29,6 @@ from brasileirao_ml.config import (  # noqa: E402
     FIGURES,
     METRICS_FILE,
     MODEL_FILE,
-    PREDICTIONS_FILE,
     REPORTS,
     SIM_FILE,
 )
@@ -654,7 +653,7 @@ def main() -> None:
         )
         st.markdown("---")
         st.markdown(
-            f"Odds de referência: média do mercado (overround ~6,8%) e Pinnacle (~3,1%)."
+            "Odds de referência: média do mercado (overround ~6,8%) e Pinnacle (~3,1%)."
         )
 
 

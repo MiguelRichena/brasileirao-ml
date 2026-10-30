@@ -245,16 +245,6 @@ def build_features(df: pd.DataFrame) -> pd.DataFrame:
     positions = _positions_by_date(long)
     prev_pos = _previous_season_positions(df)
 
-    team_cols = {
-        "form5_ppg": "form5_ppg",
-        "form5_gf": "form5_gf",
-        "form5_ga": "form5_ga",
-        "form10_ppg": "form10_ppg",
-        "rest_days": "rest",
-        "position": "pos",
-        "matchday": "matchday",
-    }
-
     long = long.merge(positions, on=["season", "date", "team"], how="left")
     long = long.merge(prev_pos, on=["team", "season"], how="left")
 
