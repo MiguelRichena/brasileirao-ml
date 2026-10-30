@@ -1,0 +1,16 @@
+# Ambiente
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Artefatos grandes, reproduziveis com scripts/train.py
+data/processed/*.csv
+models/*.joblib
+reports/predictions_walkforward.csv
+
+# Streamlit / SO
+.streamlit/secrets.toml
+.DS_Store
+Thumbs.db
