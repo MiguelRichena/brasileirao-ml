@@ -471,7 +471,7 @@ export function Performance({ data }: { data: AppData }) {
                 </p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <a
-                    href="https://github.com/MiguelRichena/brasileirao-ml#o-vazamento-que-mudou-o-resultado"
+                    href="https://github.com/MiguelRichena/brasileirao-ml#o-vazamento-de-dados-que-quase-virou-resultado"
                     target="_blank"
                     rel="noreferrer"
                     className="inline-flex items-center gap-1.5 rounded-full border border-mint-400/30 bg-mint-400/[0.08] px-3.5 py-2 text-[0.7rem] font-medium text-mint-300 transition-colors hover:bg-mint-400/[0.14]"

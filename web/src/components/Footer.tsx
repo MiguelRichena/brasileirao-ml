@@ -76,7 +76,7 @@ export function Footer({ meta }: { meta: Meta }) {
               </li>
               <li>
                 <a
-                  href="https://github.com/MiguelRichena/brasileirao-ml#metodologia"
+                  href="https://github.com/MiguelRichena/brasileirao-ml#como-o-modelo-é-construído"
                   target="_blank"
                   rel="noreferrer"
                   className="text-[0.75rem] text-mist transition-colors hover:text-chalk"
