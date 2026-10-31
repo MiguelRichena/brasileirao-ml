@@ -22,6 +22,7 @@ projeto de portfólio: **um modelo bem-feito chega perto do mercado, mas não o 
 | **Benchmark** | mercado (odds de fechamento) — log loss **0,997** |
 | **Conclusão** | o mercado vence, com diferença estatisticamente significativa |
 | **Dashboard** | Streamlit com simulador de partida, tabela projetada e explorador de times |
+| **Site** | React + TypeScript + Tailwind, com dados estáticos e sem backend |
 
 ![Log loss por temporada](reports/figures/logloss_por_temporada.png)
 
@@ -119,7 +120,7 @@ table["season"] = season + 1  # conhecida a partir da temporada seguinte
 
 **A proteção**
 
-`tests/test_no_leakage.py` tem quatro testes, incluindo um corte no meio de 2020: as
+`tests/test_no_leakage.py` tem cinco testes, incluindo um corte no meio de 2020: as
 features dos jogos anteriores ao corte precisam ser **idênticas** às calculadas com o
 dataset inteiro. Validei que o teste falha com o bug antigo e passa com a correção.
 
@@ -143,6 +144,9 @@ reports/metrics.csv · predictions_walkforward.csv · figures/
         │  fit final + Poisson + Monte Carlo
         ▼
 models/final_model.joblib  →  app/dashboard.py
+        │  scripts/export_web_data.py
+        ▼
+web/public/data/*.json  →  web/ (site React)
 ```
 
 ### Features (32)
@@ -233,6 +237,29 @@ Quatro abas:
 
 ---
 
+## Site (frontend)
+
+O site é a versão de produção do projeto: React 19 + TypeScript + Tailwind v4 + Vite, com
+Recharts e Framer Motion. Ele consome apenas JSON estático gerado pelo pipeline — não precisa
+de servidor Python rodando.
+
+Seções:
+
+1. **Hero** — confronto em destaque, probabilidades, gols esperados e favorito ao título.
+2. **Simulador 1X2** — os 380 confrontos possíveis, quatro modelos, gols esperados, matriz de
+   placares e comparação lado a lado.
+3. **Tabela projetada** — pontos médios, faixa P5–P95 e probabilidades de título, G4 e Z4.
+4. **Desempenho** — log loss por temporada, calibração, permutation importance, matriz de
+   confusão, backtest e ROI.
+5. **Times** — Elo dos últimos anos, forma, últimos jogos e estatísticas de cada clube.
+6. **Método** — pipeline, ficha técnica e limitações.
+
+Os dados vêm de `scripts/export_web_data.py`, que usa os mesmos modelos e relatórios do
+dashboard para gerar `web/public/data/*.json`: metadados, tabela, simulação, 380 confrontos,
+histórico dos times, métricas, backtest, calibração e matriz de confusão.
+
+---
+
 ## Como rodar
 
 Requisitos: Python 3.11+ (testado em 3.13) e git.
@@ -265,6 +292,23 @@ python -m pytest
 O `train.py` leva cerca de um minuto. Ele gera `data/processed/`, `models/` e `reports/`;
 por isso esses artefatos maiores não são versionados.
 
+### Frontend
+
+Requisitos: Node 20+. Com o pipeline já executado:
+
+```bash
+python scripts/export_web_data.py   # gera web/public/data/*.json
+npm --prefix web install
+npm --prefix web run dev            # desenvolvimento em http://localhost:5173
+npm --prefix web run build          # build de produção em web/dist
+npm --prefix web run preview        # serve o build localmente
+```
+
+O build usa `base: "./"`, então funciona tanto em domínio próprio quanto em uma subpasta do
+GitHub Pages. Para publicar, basta enviar o conteúdo de `web/dist` para o serviço de
+hospedagem estática (GitHub Pages, Vercel ou Netlify). O site não faz chamadas a nenhum
+backend — só lê os JSONs de `web/public/data`.
+
 ### Estrutura
 
 ```
@@ -281,7 +325,8 @@ brasileirao-ml/
 ├── scripts/
 │   ├── download_data.py
 │   ├── train.py
-│   └── backtest.py
+│   ├── backtest.py
+│   └── export_web_data.py    # gera os JSONs do site
 ├── src/brasileirao_ml/
 │   ├── config.py             # caminhos e constantes
 │   ├── data.py               # leitura, limpeza, odds, tabela
@@ -290,6 +335,9 @@ brasileirao-ml/
 │   ├── evaluate.py           # métricas e walk-forward
 │   ├── poisson.py            # gols, fixtures e Monte Carlo
 │   └── plots.py              # figuras
+├── web/                      # site React (frontend de produção)
+│   ├── public/data/          # JSONs gerados pelo pipeline
+│   └── src/                  # componentes, tipos e estilos
 └── tests/
     ├── test_no_leakage.py    # causalidade das features
     └── test_dashboard_smoke.py

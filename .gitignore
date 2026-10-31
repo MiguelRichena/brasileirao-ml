@@ -10,6 +10,12 @@ data/processed/*.csv
 models/*.joblib
 reports/predictions_walkforward.csv
 
+# Frontend
+web/node_modules/
+web/dist/
+web/.vite/
+*.tsbuildinfo
+
 # Streamlit / SO
 .streamlit/secrets.toml
 .DS_Store
