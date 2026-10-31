@@ -8,6 +8,8 @@ features causais, validação que respeita o tempo, benchmark contra odds de fec
 um dashboard interativo. O resultado principal é justamente o que quase ninguém mostra em
 projeto de portfólio: **um modelo bem-feito chega perto do mercado, mas não o supera.**
 
+**Site:** [miguelrichena.github.io/brasileirao-ml](https://miguelrichena.github.io/brasileirao-ml/)
+
 ---
 
 ## Resumo
@@ -305,9 +307,9 @@ npm --prefix web run preview        # serve o build localmente
 ```
 
 O build usa `base: "./"`, então funciona tanto em domínio próprio quanto em uma subpasta do
-GitHub Pages. Para publicar, basta enviar o conteúdo de `web/dist` para o serviço de
-hospedagem estática (GitHub Pages, Vercel ou Netlify). O site não faz chamadas a nenhum
-backend — só lê os JSONs de `web/public/data`.
+GitHub Pages. O deploy é automático: todo push em `main` roda `.github/workflows/pages.yml`,
+gera `web/dist` e publica em [miguelrichena.github.io/brasileirao-ml](https://miguelrichena.github.io/brasileirao-ml/).
+O site não faz chamadas a nenhum backend — só lê os JSONs de `web/public/data`.
 
 ### Estrutura
 
